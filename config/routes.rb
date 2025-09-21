@@ -11,4 +11,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  mount Lms::Engine => "/lms"
+
+  namespace "admin" do
+    mount Lms::Engine => "/lms"
+  end
 end
