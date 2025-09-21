@@ -43,7 +43,8 @@ gem "thruster", require: false
 gem "tailwindcss-rails"
 gem "slim-rails"
 
-gem "lms", path: '../lms'
+# gem "lms", path: '../lms'
+gem 'lms', git: "git@github.com:roonglit/lms_engine_demo.git"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
