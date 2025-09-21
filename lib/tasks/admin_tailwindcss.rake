@@ -69,3 +69,8 @@ namespace :admin do
     end
   end
 end
+
+# Hook admin Tailwind CSS build into Rails asset precompilation
+if Rake::Task.task_defined?("assets:precompile")
+  Rake::Task["assets:precompile"].enhance(["admin:tailwindcss:build"])
+end
