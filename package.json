@@ -1,0 +1,12 @@
+{
+  "name": "onerev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Roonglit Chareonsupkul <roonglit@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.68",
+    "@iconify/tailwind4": "^1.0.6",
+    "daisyui": "^5.1.13"
+  }
+}

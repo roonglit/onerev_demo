@@ -30,7 +30,7 @@ namespace :admin do
     
     def setup_admin_tailwind_files
       input_file = Rails.root.join("app/assets/tailwind/admin.css")
-      output_file = Rails.root.join("app/assets/builds/tailwind_admin.css")
+      output_file = Rails.root.join("app/assets/builds/admin/tailwind.css")
       
       # Ensure directories exist
       FileUtils.mkdir_p(File.dirname(input_file))

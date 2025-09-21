@@ -41,6 +41,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "tailwindcss-rails"
+gem "slim-rails"
 
 gem "lms", path: '../lms'
 
