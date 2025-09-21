@@ -1,6 +1,4 @@
-@plugin "daisyui" {
-    exclude: rootscrollgutter;
-}
+@plugin "daisyui";
 
 @plugin "daisyui/theme" {
   name: "dark";

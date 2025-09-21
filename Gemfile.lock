@@ -3,6 +3,7 @@ PATH
   specs:
     lms (0.1.0)
       rails (>= 8.1.0.beta1)
+      slim-rails
 
 GEM
   remote: https://rubygems.org/

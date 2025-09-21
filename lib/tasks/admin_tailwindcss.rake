@@ -50,17 +50,21 @@ namespace :admin do
     end
     
     def exec_tailwind_command(input_file, output_file, *options)
+      # Main app uses Tailwind's default content scanning behavior
+      # Engine files should be within the scanning scope or use @source directives in CSS
       cmd = [
         "tailwindcss",
         "-i", input_file.to_s,
         "-o", output_file.to_s,
         *options
-      ].join(" ")
+      ]
+      
+      puts "Building with Tailwind CSS v4 default content scanning" if ENV['DEBUG']
       
       if options.include?("--watch")
-        exec(cmd)
+        exec(*cmd)
       else
-        system(cmd)
+        system(*cmd)
       end
     end
   end
