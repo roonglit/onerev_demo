@@ -1,12 +1,12 @@
 doctype html
-html
+html class='group/html' lang='en'
   head
     title = content_for(:title) || "Onerev"
     meta name="viewport" content="width=device-width,initial-scale=1"
     meta name="apple-mobile-web-app-capable" content="yes"
     meta name="application-name" content="Onerev"
     meta name="mobile-web-app-capable" content="yes"
-    = 
+    = csrf_meta_tags
     = csp_meta_tag
 
     = yield :head
@@ -19,8 +19,8 @@ html
     link rel="apple-touch-icon" href="/icon.png"
 
     / Includes all stylesheet files in app/assets/stylesheets
-    = stylesheet_link_tag "admin", "data-turbo-track": "reload"
     = stylesheet_link_tag "lms/admin", "data-turbo-track": "reload"
+    = stylesheet_link_tag "admin", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
   body
@@ -28,7 +28,7 @@ html
       .flex
         = render "layouts/admin/sidebar"
 
-        .flex-h-screen.min-w-0.grow.flex-col.overflow-auto
+        .flex.h-screen.min-w-0.grow.flex-col.overflow-auto
           = render "layouts/admin/topbar"
           #layout-content
             = yield

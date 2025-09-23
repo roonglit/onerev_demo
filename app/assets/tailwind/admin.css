@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "./admin/typography.css";
+@import "./admin/tailwindcss";
 @import "./admin/daisyui.css";
 
 @import "./admin/layout.css";
