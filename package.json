@@ -9,6 +9,8 @@
     "@iconify/tailwind4": "^1.0.6",
     "@rails/actiontext": "^8.0.300",
     "daisyui": "^5.1.13",
+    "filepond": "^4.32.9",
+    "filepond-plugin-image-preview": "^4.6.12",
     "trix": "^2.1.15"
   }
 }

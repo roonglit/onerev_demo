@@ -1,2 +1,4 @@
 @import url("/admin/tailwind.css");
 @import url("actiontext.css");
+@import url("filepond.css");
+@import url("filepond-plugin-image-preview.css");
