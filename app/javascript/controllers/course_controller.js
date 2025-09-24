@@ -35,13 +35,14 @@ export default class extends Controller {
               // Add an appropriately-named hidden input to the form with a
               //  value of blob.signed_id so that the blob ids will be
               //  transmitted in the normal upload flow
+              console.log("blob", blob);
 
-              // const hiddenField = document.createElement('input')
-              // hiddenField.setAttribute("type", "hidden");
-              // hiddenField.setAttribute("value", blob.signed_id);
-              // console.log("input:", this.filepondTarget);
-              // hiddenField.name = input.name
-              // document.querySelector('form').appendChild(hiddenField)
+              const hiddenField = document.createElement('input')
+              hiddenField.setAttribute("type", "hidden");
+              hiddenField.setAttribute("value", blob.signed_id);
+              console.log("input:", this.filepondTarget);
+              hiddenField.name = this.filepondTarget.name + '_signed_id'
+              document.querySelector('form').appendChild(hiddenField)
             }
           })
 
