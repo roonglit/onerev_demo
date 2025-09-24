@@ -7,6 +7,8 @@
   "dependencies": {
     "@iconify-json/lucide": "^1.2.68",
     "@iconify/tailwind4": "^1.0.6",
-    "daisyui": "^5.1.13"
+    "@rails/actiontext": "^8.0.300",
+    "daisyui": "^5.1.13",
+    "trix": "^2.1.15"
   }
 }
