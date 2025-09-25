@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_03_045333) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_06_032128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -115,6 +115,25 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_03_045333) do
   create_table "lms_videos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "database_host", null: false
+    t.string "database_name", null: false
+    t.string "database_password", null: false
+    t.string "database_port", null: false
+    t.string "database_username", null: false
+    t.string "name", null: false
+    t.string "schema_name"
+    t.string "slug", null: false
+    t.string "subdomain"
+    t.integer "tenancy_type", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["schema_name"], name: "index_tenants_on_schema_name"
+    t.index ["slug"], name: "index_tenants_on_slug", unique: true
+    t.index ["subdomain"], name: "index_tenants_on_subdomain", unique: true
+    t.index ["tenancy_type"], name: "index_tenants_on_tenancy_type"
   end
 
   create_table "users", force: :cascade do |t|

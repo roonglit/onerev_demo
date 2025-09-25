@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/roonglit/lms_engine_demo.git
-  revision: 209fb229082339f7c609d074c5f9ed0f0083c784
+PATH
+  remote: ../lms
   specs:
     lms (0.1.0)
       importmap-rails
