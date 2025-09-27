@@ -44,8 +44,8 @@ gem "tailwindcss-rails"
 gem "slim-rails"
 gem "aws-sdk-s3", require: false
 
-gem "lms", path: '../lms'
-# gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
+# gem "lms", path: '../lms'
+gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

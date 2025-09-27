@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_09_24_060030) do
+ActiveRecord::Schema[8.1].define(version: 2025_09_27_030826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -60,6 +60,24 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_24_060030) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lms_curriculum_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.bigint "section_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_lms_curriculum_items_on_section_id"
+  end
+
+  create_table "lms_sections", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_lms_sections_on_course_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "lms_curriculum_items", "lms_sections", column: "section_id"
+  add_foreign_key "lms_sections", "lms_courses", column: "course_id"
 end

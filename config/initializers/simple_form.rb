@@ -61,6 +61,27 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'div', class: 'text-base-content/70 text-sm mt-1' }
   end
 
+  # Inline wrapper for horizontal layout
+  config.wrappers :inline, tag: 'div', class: 'flex items-center gap-3' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    # Label with inline styling
+    b.use :label, wrap_with: { tag: 'label', class: 'label-text min-w-fit' }
+    
+    # Input with flex-grow
+    b.use :input, wrap_with: { tag: 'div', class: 'flex-1' }
+
+    # Error and hint messages
+    b.use :error, wrap_with: { tag: 'div', class: 'text-error text-sm ml-2' }
+    b.use :hint, wrap_with: { tag: 'div', class: 'text-base-content/70 text-sm ml-2' }
+  end
+
   # Configure default wrapper
   config.default_wrapper = :daisyui_fieldset
 
