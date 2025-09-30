@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/roonglit/lms_engine_demo.git
-  revision: e23a308bcc2934ba22cc2872762b58bb69861dbf
+  revision: 85847ab641735c19ea9a8e07117a5c20f0dedd98
   specs:
     lms (0.1.0)
       rails (>= 8.1.0.beta1)
