@@ -1,11 +1,14 @@
 GIT
   remote: https://github.com/roonglit/lms_engine_demo.git
-  revision: 85847ab641735c19ea9a8e07117a5c20f0dedd98
+  revision: ac9ab6c5fb108449736b1309f85d1b26dd90ee81
   specs:
     lms (0.1.0)
+      importmap-rails
       rails (>= 8.1.0.beta1)
       simple_form
       slim-rails
+      stimulus-rails
+      turbo-rails
 
 GEM
   remote: https://rubygems.org/
@@ -399,7 +402,7 @@ GEM
     tilt (2.6.1)
     timeout (0.4.3)
     tsort (0.2.0)
-    turbo-rails (2.0.16)
+    turbo-rails (2.0.17)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
