@@ -1,0 +1,24 @@
+<div class="flex flex-col items-center justify-center p-6 mx-auto md:h-full pt:mt-0 dark:bg-gray-900">
+    <div class="w-full min-w-md p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            Forgot your password?
+        </h2>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= f.error_notification %>
+            <div>
+                <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" } %>
+            </div>
+
+            <div class="form-actions text-center mt-5">
+              <%= f.button :submit, "Send me reset password instructions", input_html: { class: "w-full px-5 py-3 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" } %>
+            </div>
+
+            <div class="text-end mt-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+              <%= render "devise/shared/links" %>
+            </div>
+        <% end %>
+    </div>
+</div>
