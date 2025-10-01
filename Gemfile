@@ -43,6 +43,7 @@ gem "image_processing", "~> 1.2"
 gem "tailwindcss-rails"
 gem "slim-rails"
 gem "aws-sdk-s3", require: false
+gem "rails_icons"
 
 # gem "lms", path: '../lms'
 gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"

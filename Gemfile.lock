@@ -1,10 +1,11 @@
 GIT
   remote: https://github.com/roonglit/lms_engine_demo.git
-  revision: ac9ab6c5fb108449736b1309f85d1b26dd90ee81
+  revision: e13cc1a6168d6bbc507c862b646f8bf9365c606d
   specs:
     lms (0.1.0)
       importmap-rails
       rails (>= 8.1.0.beta1)
+      rails_icons
       simple_form
       slim-rails
       stimulus-rails
@@ -298,6 +299,9 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails_icons (1.4.0)
+      nokogiri (~> 1.16, >= 1.16.4)
+      rails (> 6.1)
     railties (8.1.0.beta1)
       actionpack (= 8.1.0.beta1)
       activesupport (= 8.1.0.beta1)
@@ -468,6 +472,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.0.beta1)
+  rails_icons
   rubocop-rails-omakase
   selenium-webdriver
   slim-rails
