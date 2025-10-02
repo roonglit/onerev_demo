@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "post/new"
   devise_for :users
   resources :homes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,5 +23,5 @@ Rails.application.routes.draw do
     root to: redirect("/admin/lms/courses")
   end
 
-  root to: "home#index"
+  root to: "lms/home#index"
 end
