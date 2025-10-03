@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_02_083949) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_03_045333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,6 +55,21 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_02_083949) do
   create_table "lms_articles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lms_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lms_category_contents", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "content_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_lms_category_contents_on_category_id"
+    t.index ["content_id"], name: "index_lms_category_contents_on_content_id"
   end
 
   create_table "lms_contents", force: :cascade do |t|
@@ -116,6 +131,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_02_083949) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "lms_category_contents", "lms_categories", column: "category_id"
+  add_foreign_key "lms_category_contents", "lms_contents", column: "content_id"
   add_foreign_key "lms_contents", "users"
   add_foreign_key "lms_curriculum_items", "lms_sections", column: "section_id"
   add_foreign_key "lms_sections", "lms_courses", column: "course_id"
