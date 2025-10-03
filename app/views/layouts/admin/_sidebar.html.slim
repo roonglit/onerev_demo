@@ -13,7 +13,11 @@ input#layout-sidebar-toggle-trigger.hidden type='checkbox' aria-label="Toggle la
             span.grow LMS
             span.iconify.lucide--chevron-right.arrow-icon.size-3.5
           .collapse-content 
-            = link_to "Courses", lms.admin_courses_path
+            = link_to "Articles", lms.admin_articles_path, class: "sidebar-menu-item"
+            = link_to "Videos", lms.admin_videos_path, class: "sidebar-menu-item"
+            = link_to "Events", lms.admin_events_path, class: "sidebar-menu-item"
+            = link_to "Courses", lms.admin_courses_path, class: "sidebar-menu-item"
+            = link_to "Categories", lms.admin_categories_path, class: "sidebar-menu-item"
   .mb-2 
     hr.border-base-300
     ul.menu.w-full 
