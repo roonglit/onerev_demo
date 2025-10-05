@@ -23,5 +23,5 @@ Rails.application.routes.draw do
     root to: redirect("/admin/lms/courses")
   end
 
-  root to: redirect("/lms")
+  root to: "lms/home#index"
 end
