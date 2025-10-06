@@ -8,3 +8,23 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ @font-face {
+    font-family: "krungthai_fastregular";
+    src: url("/fonts/KrungthaiFastWeb-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "krungthai_fastbold";
+    src: url("/fonts/KrungthaiFastWeb-Bold.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body {
+    font-family: krungthai_fastregular;
+}
