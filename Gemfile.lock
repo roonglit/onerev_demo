@@ -1,19 +1,6 @@
 GIT
-  remote: https://github.com/roonglit/lms_engine_demo.git
-  revision: 594d6917b4bccaa679281ed7100d48c739d96f8e
-  specs:
-    lms (0.1.0)
-      importmap-rails
-      rails (>= 8.1.0.beta1)
-      rails_icons
-      simple_form
-      slim-rails
-      stimulus-rails
-      turbo-rails
-      wicked
-
-PATH
-  remote: ../campfire
+  remote: https://github.com/roonglit/campfire_demo.git
+  revision: 78f5c520a695e8667870b6747a525074dce69a0f
   specs:
     campfire (0.1.0)
       bcrypt (~> 3.1)
@@ -33,6 +20,20 @@ PATH
       stimulus-rails (~> 1.3)
       turbo-rails (~> 2.0)
       web-push (~> 3.0)
+
+GIT
+  remote: https://github.com/roonglit/lms_engine_demo.git
+  revision: 594d6917b4bccaa679281ed7100d48c739d96f8e
+  specs:
+    lms (0.1.0)
+      importmap-rails
+      rails (>= 8.1.0.beta1)
+      rails_icons
+      simple_form
+      slim-rails
+      stimulus-rails
+      turbo-rails
+      wicked
 
 GEM
   remote: https://rubygems.org/
@@ -249,9 +250,6 @@ GEM
     net-http-persistent (4.0.6)
       connection_pool (~> 2.2, >= 2.2.4)
     net-imap (0.5.11)
-    net-imap (0.5.12)
-      date
-      net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)

@@ -49,7 +49,7 @@ gem "rails_icons"
 gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
 
 # Campfire chat engine
-gem 'campfire', path: '../campfire'
+gem 'campfire', git: "https://github.com/roonglit/campfire_demo.git"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
