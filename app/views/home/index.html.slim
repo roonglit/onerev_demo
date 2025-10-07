@@ -1,1 +1,19 @@
-h1 Home
+.flex.flex-col.items-center.justify-center style="min-height: 80vh;"
+  .text-center.mb-12
+    h1.text-4xl.font-bold.mb-4 Welcome to OneRev
+    p.text-lg.text-gray-600 Choose where you'd like to go
+
+  .flex.gap-8
+    = link_to lms.root_path, class: "flex flex-col items-center gap-4 p-8 hover:bg-base-200 rounded-2xl transition-all group"
+      .flex.items-center.justify-center style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+        = icon "academic-cap", style: :solid, class: "w-16 h-16 text-white"
+      .text-center
+        h2.text-2xl.font-bold.mb-2 LMS
+        p.text-gray-600 Learning Management System
+
+    = link_to campfire.root_path, class: "flex flex-col items-center gap-4 p-8 hover:bg-base-200 rounded-2xl transition-all group"
+      .flex.items-center.justify-center style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"
+        = icon "chat-bubble-left-right", style: :solid, class: "w-16 h-16 text-white"
+      .text-center
+        h2.text-2xl.font-bold.mb-2 Chat
+        p.text-gray-600 Team Communication
