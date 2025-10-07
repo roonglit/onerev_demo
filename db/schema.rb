@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_06_032128) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_07_130123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,52 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_06_032128) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "campfire_memberships", force: :cascade do |t|
+    t.datetime "connected_at"
+    t.integer "connections", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.string "involvement", default: "mentions"
+    t.bigint "room_id", null: false
+    t.datetime "unread_at"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["room_id", "created_at"], name: "index_campfire_memberships_on_room_id_and_created_at"
+    t.index ["room_id", "user_id"], name: "index_campfire_memberships_on_room_id_and_user_id", unique: true
+    t.index ["room_id"], name: "index_campfire_memberships_on_room_id"
+    t.index ["user_id"], name: "index_campfire_memberships_on_user_id"
+  end
+
+  create_table "campfire_messages", force: :cascade do |t|
+    t.string "client_message_id", null: false
+    t.datetime "created_at", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_campfire_messages_on_creator_id"
+    t.index ["room_id"], name: "index_campfire_messages_on_room_id"
+  end
+
+  create_table "campfire_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "creator_id", null: false
+    t.string "name"
+    t.string "type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_campfire_rooms_on_creator_id"
+  end
+
+  create_table "campfire_users", force: :cascade do |t|
+    t.boolean "active", default: true
+    t.text "bio"
+    t.string "bot_token"
+    t.datetime "created_at", null: false
+    t.integer "role", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["bot_token"], name: "index_campfire_users_on_bot_token", unique: true
+    t.index ["user_id"], name: "index_campfire_users_on_user_id"
   end
 
   create_table "lms_articles", force: :cascade do |t|
@@ -150,6 +196,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_06_032128) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "campfire_memberships", "campfire_rooms", column: "room_id"
+  add_foreign_key "campfire_memberships", "campfire_users", column: "user_id"
+  add_foreign_key "campfire_messages", "campfire_rooms", column: "room_id"
+  add_foreign_key "campfire_messages", "campfire_users", column: "creator_id"
+  add_foreign_key "campfire_rooms", "campfire_users", column: "creator_id"
+  add_foreign_key "campfire_users", "users"
   add_foreign_key "lms_category_contents", "lms_categories", column: "category_id"
   add_foreign_key "lms_category_contents", "lms_contents", column: "content_id"
   add_foreign_key "lms_contents", "users"

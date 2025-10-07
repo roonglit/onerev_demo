@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   mount Lms::Engine => "/lms"
+  mount Campfire::Engine => "/chat"
 
   namespace "admin" do
     mount Lms::Engine => "/lms"
@@ -23,5 +24,5 @@ Rails.application.routes.draw do
     root to: redirect("/admin/lms/courses")
   end
 
-  root to: redirect("/lms")
+  root to: "home#index"
 end
