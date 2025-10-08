@@ -45,8 +45,8 @@ gem "slim-rails"
 gem "aws-sdk-s3", require: false
 gem "rails_icons"
 
-# gem "lms", path: '../lms'
-gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
+gem "lms", path: '../lms_engine_demo'
+# gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
 
 # Campfire chat engine
 gem 'campfire', git: "https://github.com/roonglit/campfire_demo.git"
