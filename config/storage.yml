@@ -15,14 +15,6 @@ digitalocean:
   region: sgp1
   bucket: <%= Rails.application.credentials.dig(:digitalocean, :bucket) %>
 
-digitalocean:
-  service: S3
-  endpoint: https://sgp1.digitaloceanspaces.com
-  access_key_id: <%= Rails.application.credentials.dig(:digitalocean, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:digitalocean, :secret_access_key) %>
-  region: sgp1
-  bucket: one-rev-<%= ENV['APP_ENV'] %>
-
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
