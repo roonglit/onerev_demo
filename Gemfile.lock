@@ -21,8 +21,9 @@ GIT
       turbo-rails (~> 2.0)
       web-push (~> 3.0)
 
-PATH
-  remote: ../lms_engine_demo
+GIT
+  remote: https://github.com/roonglit/lms_engine_demo.git
+  revision: ae36f391b6658b9859d744c366ed82b7ab2daffc
   specs:
     lms (0.1.0)
       importmap-rails
