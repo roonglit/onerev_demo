@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get "post/new"
-  devise_for :users
   resources :homes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -23,6 +22,10 @@ Rails.application.routes.draw do
 
     root to: redirect("/admin/lms/courses")
   end
+
+devise_for :users, controllers: {
+  omniauth_callbacks: 'users/omniauth_callbacks'
+}
 
   root to: "home#index"
 end

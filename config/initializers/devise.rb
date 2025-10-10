@@ -306,6 +306,25 @@ Devise.setup do |config|
   config.responder.redirect_status = :see_other
 
   # ==> Configuration for :registerable
+  OmniAuth.config.allowed_request_methods = [:post]
+
+  config.omniauth :openid_connect, {
+    name: :keycloak,
+    scope: %i[openid email profile],
+    response_type: :code,
+    issuer: "http://localhost:8080/realms/lms",
+    discovery: false,  # ปิด discovery แล้วชี้ endpoints เอง
+    client_signing_alg: 'RS256',
+    client_options: {
+      identifier: "kob888-client-id",
+      secret:     nil,
+      redirect_uri: "http://localhost:3000/users/auth/keycloak/callback",
+      authorization_endpoint: "http://localhost:8080/realms/lms/protocol/openid-connect/auth",
+      token_endpoint:         "http://localhost:8080/realms/lms/protocol/openid-connect/token",
+      userinfo_endpoint:      "http://localhost:8080/realms/lms/protocol/openid-connect/userinfo",
+      jwks_uri:               "http://localhost:8080/realms/lms/protocol/openid-connect/certs"
+    }
+  }
 
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
