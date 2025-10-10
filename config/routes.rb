@@ -23,9 +23,11 @@ Rails.application.routes.draw do
     root to: redirect("/admin/lms/courses")
   end
 
-devise_for :users, controllers: {
-  omniauth_callbacks: 'users/omniauth_callbacks'
-}
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+  post "/call_api", to: "apis#call_api_get_keycloak_token", as: :call_api_get_keycloak_token
 
   root to: "home#index"
 end

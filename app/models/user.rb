@@ -10,6 +10,7 @@ class User < ApplicationRecord
     user.name = auth.info.name if user.respond_to?(:name)
     user.provider = auth.provider
     user.uid = auth.uid
+    user.token = auth.credentials.token
     user.save!
     user
   end
