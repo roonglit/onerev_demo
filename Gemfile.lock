@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/roonglit/campfire_demo.git
-  revision: 78f5c520a695e8667870b6747a525074dce69a0f
+  revision: 3907be266808c76022809961bdfd0d59084c1bd6
   specs:
     campfire (0.1.0)
       bcrypt (~> 3.1)
@@ -15,9 +15,10 @@ GIT
       rails (>= 8.1.0.beta1)
       rails_autolink (~> 1.1)
       redis (~> 5.0)
-      rqrcode (~> 2.0)
+      rqrcode (>= 2, < 4)
       sqlite3 (~> 2.0)
       stimulus-rails (~> 1.3)
+      tailwindcss-rails
       turbo-rails (~> 2.0)
       web-push (~> 3.0)
 
@@ -116,7 +117,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1168.0)
+    aws-partitions (1.1172.0)
     aws-sdk-core (3.233.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -211,7 +212,7 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jmespath (1.6.2)
-    json (2.15.0)
+    json (2.15.1)
     jwt (3.1.2)
       base64
     kamal (2.7.0)
@@ -297,7 +298,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.5.1)
+    prism (1.5.2)
     propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -368,14 +369,14 @@ GEM
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
+    responders (3.2.0)
+      actionpack (>= 7.0)
+      railties (>= 7.0)
     rexml (3.4.4)
-    rqrcode (2.2.0)
+    rqrcode (3.1.0)
       chunky_png (~> 1.0)
-      rqrcode_core (~> 1.0)
-    rqrcode_core (1.2.0)
+      rqrcode_core (~> 2.0)
+    rqrcode_core (2.0.0)
     rubocop (1.81.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -431,7 +432,7 @@ GEM
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_cache (1.0.7)
+    solid_cache (1.0.8)
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)

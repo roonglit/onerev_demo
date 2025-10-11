@@ -24,5 +24,10 @@ Rails.application.routes.draw do
     root to: redirect("/admin/lms/courses")
   end
 
+  resources :configurations, only: [] do
+    get :ios_v1, on: :collection
+    get :android_v1, on: :collection
+  end
+
   root to: "home#index"
 end
