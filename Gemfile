@@ -44,6 +44,7 @@ gem "tailwindcss-rails"
 gem "slim-rails"
 gem "aws-sdk-s3", require: false
 gem "rails_icons"
+gem "devise", "~> 4.9"
 
 # gem "lms", path: '../lms_engine_demo'
 gem 'lms', git: "https://github.com/roonglit/lms_engine_demo.git"
@@ -75,5 +76,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "devise", "~> 4.9"
