@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/roonglit/campfire_demo.git
-  revision: 3907be266808c76022809961bdfd0d59084c1bd6
+  revision: ff08ff486c1f96069029c26031ad9f1bfa00797b
   specs:
     campfire (0.1.0)
       bcrypt (~> 3.1)
@@ -175,7 +175,7 @@ GEM
     dotenv (3.1.8)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (5.0.3)
+    erb (5.1.1)
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
