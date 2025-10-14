@@ -31,10 +31,16 @@ class ApisController < ApplicationController
     req["Content-Type"] = "application/json"
     req.body = {
       subject: "Test meeting",
-      start: { dateTime: "2025-10-14T09:00:00", timeZone: "UTC" },
-      end:   { dateTime: "2025-10-14T10:00:00", timeZone: "UTC" },
+      start: { dateTime: "2025-10-16T09:00:00", timeZone: "Asia/Bangkok" },
+      end:   { dateTime: "2025-10-16T10:00:00", timeZone: "Asia/Bangkok" },
       isOnlineMeeting: true,
-      onlineMeetingProvider: "teamsForBusiness"
+      onlineMeetingProvider: "teamsForBusiness",
+      attendees: [
+      {
+        emailAddress: { address: "kanin@odds.com", name: "กบ" },
+        type: "optional"
+      }
+    ]
     }.to_json
 
     res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
