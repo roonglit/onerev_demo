@@ -10,8 +10,6 @@ class MsGraphEventsService
     @access_token = access_token # token ของ Microsoft Graph (ได้จาก Keycloak broker/microsoft)
   end
 
-  # สร้างอีเวนต์ (ออนไลน์ Teams) ล่วงหน้า
-  # start_at/end_at = "YYYY-MM-DDTHH:mm:ss" ตามโซนที่ส่งใน timezone
   def create_event(subject:, start_at:, end_at:, timezone: "Asia/Bangkok", html: " ")
     payload = {
       subject: subject,

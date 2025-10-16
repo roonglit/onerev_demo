@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_10_072046) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_15_093200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -147,6 +147,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_10_072046) do
   create_table "lms_events", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.date "event_date"
+    t.string "external_etag"
+    t.string "external_event_id"
+    t.string "external_ical_uid"
+    t.string "external_provider"
+    t.string "external_web_link"
+    t.string "online_meeting_url"
+    t.datetime "synced_at"
     t.datetime "updated_at", null: false
   end
 

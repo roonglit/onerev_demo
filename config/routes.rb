@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  post "/call_api", to: "apis#call_api_get_keycloak_token", as: :call_api_get_keycloak_token
+  post "/call_api_get_keycloak_token", to: "apis#call_api_get_keycloak_token", as: :call_api_get_keycloak_token
+  post "/create_teams_event", to: "apis#create_teams_event", as: :create_teams_event
+  delete "/clear_token", to: "apis#clear_token", as: :clear_token
 
   root to: "home#index"
 end
