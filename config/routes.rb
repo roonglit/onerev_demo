@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "configurations/android_v1"
-  get "post/new"
   devise_for :users
   resources :homes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -24,6 +22,8 @@ Rails.application.routes.draw do
 
     root to: redirect("/admin/lms/courses")
   end
+
+  resources :notifications, only: [:index]
 
   resources :configurations, only: [] do
     # get :ios_v1, on: :collection
