@@ -2,6 +2,7 @@ namespace :tailwind do
   desc "Update Tailwind CSS source paths from Rails engines and main app"
   task update_source_paths: :environment do
     paths = Rails.application.config.tailwind_content_paths || []
+    config_path = Rails.root.join('tailwind.config.js')
 
     # Generate tailwind.config.js content
     config_content = <<~JS
@@ -14,15 +15,29 @@ namespace :tailwind do
       }
     JS
 
-    config_path = Rails.root.join('tailwind.config.js')
+    # Ensure the directory exists (should always exist, but just in case)
+    FileUtils.mkdir_p(File.dirname(config_path))
+
+    # Create the file (or overwrite if it exists)
     File.write(config_path, config_content)
 
-    puts "✓ Generated tailwind.config.js with #{paths.length} content paths"
-    paths.each { |path| puts "  - #{path}" }
+    if File.exist?(config_path)
+      puts "✓ Generated tailwind.config.js at #{config_path}"
+      puts "  Content paths: #{paths.length}"
+      paths.each { |path| puts "  - #{path}" }
+    else
+      puts "✗ Failed to create tailwind.config.js at #{config_path}"
+      exit 1
+    end
   end
 end
 
-# Hook into assets:precompile for production deployments
-if Rake::Task.task_defined?("assets:precompile")
-  Rake::Task["assets:precompile"].enhance(["tailwind:update_source_paths"])
+# Hook into tailwindcss:build to ensure config is generated before building
+if Rake::Task.task_defined?("tailwindcss:build")
+  Rake::Task["tailwindcss:build"].enhance(["tailwind:update_source_paths"])
+end
+
+# Also hook into admin build tasks
+if Rake::Task.task_defined?("admin:tailwindcss:build")
+  Rake::Task["admin:tailwindcss:build"].enhance(["tailwind:update_source_paths"])
 end
