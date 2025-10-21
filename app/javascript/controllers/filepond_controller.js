@@ -4,11 +4,13 @@ import * as FilePond from "filepond"
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 
 export default class extends Controller {
-  static targets = ["form", "input"]
+  static targets = ["input"]
 
   connect() {
     if (this.inputTarget) {
       this.inputName = this.inputTarget.name
+      // Store reference to the container before FilePond transforms the input
+      this.containerElement = this.inputTarget.parentNode
       this.initializeFilePond(
         this.inputTarget.dataset.directUploadUrl
       )
@@ -40,7 +42,7 @@ export default class extends Controller {
               hiddenField.setAttribute("type", "hidden");
               hiddenField.setAttribute("value", blob.signed_id);
               hiddenField.name = this.inputName
-              this.formTarget.appendChild(hiddenField)
+              this.containerElement.appendChild(hiddenField)
 
               load(blob.signed_id)
             }
@@ -52,6 +54,14 @@ export default class extends Controller {
         },
 
         revert: (uniqueFileId, load, error) => {
+          // Find and remove any hidden input with value matching uniqueFileId in the same container
+          const hiddenInputs = this.containerElement.querySelectorAll(`input[type="hidden"][name="${this.inputName}"]`);
+          hiddenInputs.forEach(input => {
+            if (input.value === uniqueFileId) {
+              input.remove();
+            }
+          });
+          
           load();
         }
       }
