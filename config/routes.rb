@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
+  resources :notification_tokens, only: [:create]
+
   resources :configurations, only: [] do
     # get :ios_v1, on: :collection
     get :android_v1, on: :collection

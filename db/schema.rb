@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_14_004212) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_21_122335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -164,6 +164,39 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_14_004212) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "noticed_events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "notifications_count"
+    t.jsonb "params"
+    t.bigint "record_id"
+    t.string "record_type"
+    t.string "type"
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id"], name: "index_noticed_events_on_record"
+  end
+
+  create_table "noticed_notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "event_id", null: false
+    t.datetime "read_at", precision: nil
+    t.bigint "recipient_id", null: false
+    t.string "recipient_type", null: false
+    t.datetime "seen_at", precision: nil
+    t.string "type"
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_noticed_notifications_on_event_id"
+    t.index ["recipient_type", "recipient_id"], name: "index_noticed_notifications_on_recipient"
+  end
+
+  create_table "notification_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "platform", null: false
+    t.string "token", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_notification_tokens_on_user_id"
+  end
+
   create_table "tenants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "database_host", null: false
@@ -208,4 +241,5 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_14_004212) do
   add_foreign_key "lms_contents", "users"
   add_foreign_key "lms_curriculum_items", "lms_sections", column: "section_id"
   add_foreign_key "lms_sections", "lms_courses", column: "course_id"
+  add_foreign_key "notification_tokens", "users"
 end

@@ -24,6 +24,9 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <meta data-controller="bridge--notification-token">
+    <% end %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
       <p class="notice"><%= notice %></p>
