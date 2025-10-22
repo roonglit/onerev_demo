@@ -35,6 +35,14 @@ class NewArticleNotifier < ApplicationNotifier
         }
       }
     }
+
+    config.error_handler = ->(response) {
+      Rails.logger.error("FCM Error: #{response.code} - #{response.body}")
+    }
+
+    config.invalid_token = ->(device_token) {
+      Rails.logger.warn("Invalid FCM token: #{device_token}")
+    }
   end
 
   # Add required params
