@@ -18,7 +18,7 @@ class NewArticleNotifier < ApplicationNotifier
   #   config.class = "MyDeliveryMethod"
   # end
   deliver_by :fcm do |config|
-    config.credentials = Rails.application.credentials.fcm.to_h.deep_stringify_keys
+    config.credentials = Rails.application.credentials.fcm.to_h
 
     config.device_tokens = -> {
       recipient.notification_tokens.where(platform: :FCM).pluck(:token)
@@ -37,11 +37,12 @@ class NewArticleNotifier < ApplicationNotifier
     }
 
     config.error_handler = ->(response) {
-      Rails.logger.error("FCM Error: #{response.code} - #{response.body}")
+      Rails.logger.error("FCM Error Response: Code=#{response.code}, Body=#{response.body}")
     }
 
-    config.invalid_token = ->(device_token) {
+    config.invalid_token = ->(device_token, response = nil) {
       Rails.logger.warn("Invalid FCM token: #{device_token}")
+      Rails.logger.warn("FCM Response: Code=#{response&.code}, Body=#{response&.body}") if response
     }
   end
 
