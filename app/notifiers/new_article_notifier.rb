@@ -18,7 +18,7 @@ class NewArticleNotifier < ApplicationNotifier
   #   config.class = "MyDeliveryMethod"
   # end
   deliver_by :fcm do |config|
-    config.credentials = Rails.application.credentials.fcm.to_h
+    config.credentials = Rails.application.credentials.fcm.to_h.deep_stringify_keys
 
     config.device_tokens = -> {
       recipient.notification_tokens.where(platform: :FCM).pluck(:token)
