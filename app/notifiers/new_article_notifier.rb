@@ -17,8 +17,6 @@ class NewArticleNotifier < ApplicationNotifier
   # deliver_by :custom do |config|
   #   config.class = "MyDeliveryMethod"
   # end
-  required_param :article_id
-
   deliver_by :fcm do |config|
     config.credentials = Rails.application.credentials.fcm.to_h
 
@@ -31,11 +29,8 @@ class NewArticleNotifier < ApplicationNotifier
         message: {
           token: device_token,
           notification: {
-            title: "Someone created a new content",
-            body: "Someone created a new content"
-          },
-          data: {
-            path: lms.article_path(params[:article_id])
+            title: "New Article Published",
+            body: "Someone created a new content. Check it out!"
           }
         }
       }

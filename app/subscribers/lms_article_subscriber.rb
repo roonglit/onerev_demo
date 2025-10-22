@@ -12,7 +12,7 @@ class LmsArticleSubscriber
 
     # Send push notifications to all users with FCM tokens
     User.find_each do |user|
-      NewArticleNotifier.with(article_id: article_id).deliver(user)
+      NewArticleNotifier.with.deliver(user)
     end
 
     Rails.logger.info "Push notifications sent for article #{article_id}"
