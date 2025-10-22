@@ -31,7 +31,8 @@ class NewArticleNotifier < ApplicationNotifier
         message: {
           token: device_token,
           notification: {
-            title: "Someone created a new content"
+            title: "Someone created a new content",
+            body: "Someone created a new content"
           },
           data: {
             path: lms.article_path(params[:article_id])
